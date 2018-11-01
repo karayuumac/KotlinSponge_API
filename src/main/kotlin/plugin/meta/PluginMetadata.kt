@@ -25,10 +25,13 @@
 package plugin.meta
 
 import java.util.function.Consumer
+import java.util.regex.Pattern
 
 /**
  * @author Sponge
  */
 class PluginMetadata { //implements Consumer<PluginMetadata>は(PluginMetadata)->Unitに等しい
-
+    companion object {
+        val ID_PATTERN: Pattern = Pattern.compile("[a-z][a-z0-9-_]{0,63}")
+    }
 }

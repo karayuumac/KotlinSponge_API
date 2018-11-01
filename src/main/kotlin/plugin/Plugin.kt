@@ -24,20 +24,22 @@
  */
 package plugin
 
-import java.lang.annotation.ElementType
+import plugin.meta.PluginMetadata
 
 /**
- * Sponge pluginを説明したり、目印にしたりするために使われるアノテーションです。
+ * Sponge pluginを説明したり、pluginの目印にしたりするために使われるアノテーションです。
  *
  * @author Sponge
  */
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.TYPE)
-annotation class Plugin {
-    /**
-     * plugin IDがマッチしなければならないパターンです。
-     * plugin IDはlower caseで、英数字で始まっていて、全て英数字・ダッシュ・アンダースコアである必要があります。
-     * plugin IDは64文字を超えてはなりません。
-     */
-    val ID_PATTERN =
-}
+annotation class Plugin(
+        /**
+         * 内部で使用されるプラグインのIDです。他のプラグインと競合しないように、IDは一意でなければなりません。
+         * プラグインIDは、[PluginMetadata.ID_PATTERN]に合致する必要があります。
+         *
+         * @return プラグインの識別子
+         * @see <a href="https://goo.gl/MRRYSJ">Javaパッケージの命名規則</a>
+         */
+        val id: String
+)
